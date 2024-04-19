@@ -1,0 +1,57 @@
+##############################################
+curl -X 'POST' \
+  'http://127.0.0.1:8000/prediction' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "feature_vector": [
+    10, 10
+  ],
+  "score": false
+}'
+
+
+## RESPONSE
+
+{
+  "is_inlier": -1
+}
+##############################################
+
+curl -X 'POST' \
+  'http://127.0.0.1:8000/prediction' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "feature_vector": [
+    10, 10
+  ],
+  "score": true
+}'
+
+## RESPONSE
+
+{
+  "is_inlier": -1,
+  "anomaly_score": -0.8505735025465591
+}
+
+##############################################
+
+curl -X 'GET' \
+  'http://127.0.0.1:8000/model_information' \
+  -H 'accept: application/json'
+  
+## RESPONSE
+
+{
+  "bootstrap": false,
+  "contamination": 0.001,
+  "max_features": 1,
+  "max_samples": "auto",
+  "n_estimators": 100,
+  "n_jobs": null,
+  "random_state": 16,
+  "verbose": 0,
+  "warm_start": false
+}
